@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace APIUser
 {
+    //startup class
     public class Startup
     {
         public Startup(IConfiguration configuration)
