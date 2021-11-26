@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.User
+namespace Models
 {
-    public class User
+    public partial class User
     {
         public int UserId { get; set; }
         public string FistName { get; set; }
@@ -21,6 +21,14 @@ namespace Models.User
         public int ZIP { get; set; }
         public string FullAddress { get; set; }
         public string ActivationCode { get; set; }
-
+    }
+    public partial class User
+    {
+        public ICollection<Rates> rates { get; set; }
+        public ICollection<Cart> carts { get; set; }
+        public ICollection<Comment> comments { get; set; }
+        public ICollection<Order> orders { get; set; }
+        public ICollection<WatchList> watchLists { get; set; }
+        
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Order
+namespace Models 
 {
     public class Order
     {
@@ -21,6 +21,8 @@ namespace Models.Order
         public int PaymentId { get; set; }
 
 
-
+        public User user { get; set; }
+        public PaymentWay paymentWay { get; set; }
+        public ICollection<OrderItem> orderItems { get; set; }
     }
 }

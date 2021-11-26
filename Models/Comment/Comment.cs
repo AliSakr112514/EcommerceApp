@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Comment
+namespace Models 
 {
     public class Comment
     {
@@ -13,6 +13,7 @@ namespace Models.Comment
         public string Description { get; set; }
         public DateTime Date { get; set; }
 
-
+        public User user { get; set; }
+        public Product product { get; set; }
     }
 }

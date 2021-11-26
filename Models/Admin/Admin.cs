@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Admin
+namespace Models
 {
     public class Admin
     {
@@ -19,7 +19,8 @@ namespace Models.Admin
         public DateTime BirthDate { get; set; }
         public DateTime HireDate { get; set; }
         public float Salary { get; set; }
-       
 
+        public ICollection<Product> Products { get; set; }
+        public ICollection<Offers> offers { get; set; }
     }
 }
