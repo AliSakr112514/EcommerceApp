@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class CartEntityConfiguration : IEntityTypeConfiguration<Cart>
+    public class CartEntityConfiguration : IEntityTypeConfiguration<Cart>
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {

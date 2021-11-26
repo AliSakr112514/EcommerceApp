@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class AdminEntityConfiguration : IEntityTypeConfiguration<Admin>
+    public class AdminEntityConfiguration : IEntityTypeConfiguration<Admin>
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
         { 

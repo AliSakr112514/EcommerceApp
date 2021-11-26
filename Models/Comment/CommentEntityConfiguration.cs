@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models 
 {
-    class CommentEntityConfiguration : IEntityTypeConfiguration<Comment>
+    public class CommentEntityConfiguration : IEntityTypeConfiguration<Comment>
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {

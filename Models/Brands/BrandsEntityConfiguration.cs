@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class BrandsEntityConfiguration : IEntityTypeConfiguration<Brands>
+    public class BrandsEntityConfiguration : IEntityTypeConfiguration<Brands>
     {
         public void Configure(EntityTypeBuilder<Brands> builder)
         {

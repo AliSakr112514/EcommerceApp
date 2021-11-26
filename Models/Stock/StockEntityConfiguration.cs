@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models 
 {
-    class StockEntityConfiguration : IEntityTypeConfiguration<Stock>
+    public class StockEntityConfiguration : IEntityTypeConfiguration<Stock>
     {
         public void Configure(EntityTypeBuilder<Stock> builder)
         {
