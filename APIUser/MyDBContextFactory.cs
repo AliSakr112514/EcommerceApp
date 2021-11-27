@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace APIUser
 {
-    public class MyDBContextFactory : IDesignTimeDbContextFactory<myDbContext>
+    public class MyDBContextFactory //: //IDesignTimeDbContextFactory<myDbContext>
     {
-        public myDbContext CreateDbContext(string[] args)
-        {
-            IConfigurationRoot SettingsObj
-                = new ConfigurationBuilder().SetBasePath
-                (Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+        //public myDbContext CreateDbContext(string[] args)
+        //{
+        //    //IConfigurationRoot SettingsObj
+        //    //    = new ConfigurationBuilder().SetBasePath
+        //    //    (Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
 
-            DbContextOptionsBuilder<myDbContext>Builder
-                 = new DbContextOptionsBuilder<myDbContext>();
-            Builder.UseSqlServer(SettingsObj.GetConnectionString("ebaydatabase"));
+        //    //DbContextOptionsBuilder<myDbContext>Builder
+        //    //     = new DbContextOptionsBuilder<myDbContext>();
+        //    //Builder.UseSqlServer(SettingsObj.GetConnectionString("ebaydatabase"));
 
-            myDbContext Context = new myDbContext(Builder.Options);
-            return Context;
-        }
+        //    //myDbContext Context = new myDbContext(Builder.Options);
+        //    //return Context;
+        //}
     }
 }

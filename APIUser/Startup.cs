@@ -29,7 +29,12 @@ namespace APIUser
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<myDbContext>
+                (options =>
+                {
+                    options.UseSqlServer
+                    (Configuration.GetConnectionString("ebaydatabase"));
+                });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

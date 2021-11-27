@@ -23,7 +23,7 @@ namespace Models
             builder.HasOne(p => p.category).WithMany(a => a.Products).HasForeignKey(p => p.CatId);
             builder.HasOne(p => p.brands).WithMany(a => a.Products).HasForeignKey(p => p.BrandId); 
             builder.HasOne(p => p.stock).WithMany(s => s.Products).HasForeignKey(p => p.StockId);
-            builder.HasOne(p => p.subCategory).WithMany(s => s.Products).HasForeignKey(p => p.SubCatId);
+            builder.HasOne(p => p.subCategory).WithMany(s => s.Products).HasForeignKey(p => p.SubCatId).OnDelete(DeleteBehavior.Restrict);
               
         }
     }
