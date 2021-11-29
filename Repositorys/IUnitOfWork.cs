@@ -1,0 +1,20 @@
+﻿using Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repositorys
+{
+    public interface IUnitOfWork
+    {
+        IRepository<Product> GetPrdRepo();
+        IRepository<Category> GetCatRepo();
+        IRepository<SubCategory> GetSubCatRepo();
+
+       // IRepository<Brands> GetBrandRepo();
+
+        Task Save();
+    }
+}

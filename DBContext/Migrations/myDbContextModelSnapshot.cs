@@ -111,7 +111,7 @@ namespace DBContext.Migrations
 
             modelBuilder.Entity("Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("CatID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -121,7 +121,7 @@ namespace DBContext.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("CatID");
 
                     b.ToTable("Categories");
                 });
@@ -287,7 +287,7 @@ namespace DBContext.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CatId")
+                    b.Property<int>("CatID")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -316,7 +316,7 @@ namespace DBContext.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("CatId");
+                    b.HasIndex("CatID");
 
                     b.HasIndex("StockId");
 
@@ -630,7 +630,7 @@ namespace DBContext.Migrations
 
                     b.HasOne("Models.Category", "category")
                         .WithMany("Products")
-                        .HasForeignKey("CatId")
+                        .HasForeignKey("CatID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

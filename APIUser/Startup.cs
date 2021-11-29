@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Repositorys;
 
 namespace APIUser
 {
@@ -35,12 +36,17 @@ namespace APIUser
                     options.UseSqlServer
                     (Configuration.GetConnectionString("ebaydatabase"));
                 });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>),
+                        typeof(Repository<>));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIUser", Version = "v1" });
             });
-            
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

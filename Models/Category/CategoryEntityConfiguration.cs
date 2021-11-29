@@ -13,8 +13,8 @@ namespace Models
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             // throw new NotImplementedException();
-            builder.HasKey(i => i.CategoryId);
-            builder.Property(i => i.CategoryId).ValueGeneratedOnAdd();
+            builder.HasKey(i => i.CatID);
+            builder.Property(i => i.CatID).ValueGeneratedOnAdd();
             builder.Property(i => i.CategoryName).IsRequired().HasMaxLength(500);
         }
     }

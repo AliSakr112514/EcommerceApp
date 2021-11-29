@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBContext.Migrations
 {
     [DbContext(typeof(myDbContext))]
-    [Migration("20211127134858_addfirsttime1")]
-    partial class addfirsttime1
+    [Migration("20211129182611_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,7 +113,7 @@ namespace DBContext.Migrations
 
             modelBuilder.Entity("Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("CatID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -123,7 +123,7 @@ namespace DBContext.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("CatID");
 
                     b.ToTable("Categories");
                 });
@@ -289,7 +289,7 @@ namespace DBContext.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CatId")
+                    b.Property<int>("CatID")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -318,7 +318,7 @@ namespace DBContext.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("CatId");
+                    b.HasIndex("CatID");
 
                     b.HasIndex("StockId");
 
@@ -632,7 +632,7 @@ namespace DBContext.Migrations
 
                     b.HasOne("Models.Category", "category")
                         .WithMany("Products")
-                        .HasForeignKey("CatId")
+                        .HasForeignKey("CatID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

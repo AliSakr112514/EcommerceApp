@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public partial class User
+    public partial class User 
     {
         public int UserId { get; set; }
         public string FistName { get; set; }

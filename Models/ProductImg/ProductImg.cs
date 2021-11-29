@@ -8,8 +8,9 @@ namespace Models
 {
     public class ProductImg
     {
+       public int ImgId { get; set; }
         public int ProductId { get; set; }
-        public int ImgId { get; set; }
+     
         public string  src { get; set; }
 
         public Product product { get; set; }

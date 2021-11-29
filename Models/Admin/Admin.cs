@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Admin
+    public class Admin 
     {
-        public int AdminId { get; set; }
+       public int AdminId { get; set; }
         public string FistName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

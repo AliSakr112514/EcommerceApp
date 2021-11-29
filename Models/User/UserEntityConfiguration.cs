@@ -25,9 +25,6 @@ namespace Models
             builder.Property(u => u.ActivationCode).HasMaxLength(15).HasDefaultValue("");
 
 
-
-
-
             //public string Country { get; set; }
             //public string City { get; set; }
             //public int ZIP { get; set; }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models 
 {
-    public class Offers
+    public class Offers 
     {
-        public int OfferId { get; set; }
+       public int OfferId { get; set; }
         public int ProductId { get; set; }
         public int AdminId { get; set; }
         public float NewPrice { get; set; }
