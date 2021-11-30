@@ -17,7 +17,7 @@ namespace APIUser.Controllers
         IRepository<Product> PrdRepo;
         IRepository<Category> CatRepo;
         IRepository<SubCategory> SubCatRepo;
-       // IRepository<Brands> BrandsRepo;
+        IRepository<Brands> BrandsRepo;
         IUnitOfWork IunitOfWork;
         ResultViewModel Result;
         public ProductController(IUnitOfWork _IunitOfWork )
@@ -26,9 +26,10 @@ namespace APIUser.Controllers
             PrdRepo = _IunitOfWork.GetPrdRepo();
             CatRepo = _IunitOfWork.GetCatRepo();
             SubCatRepo = _IunitOfWork.GetSubCatRepo();
-           // BrandsRepo = _IunitOfWork.GetBrandRepo();
+            BrandsRepo = _IunitOfWork.GetBrandRepo();
             Result = new ResultViewModel();
         }
+        // return All products
         [Route("Product")]
         [HttpGet]
         public async Task<ResultViewModel> GetAllProduct()
@@ -37,70 +38,88 @@ namespace APIUser.Controllers
             Result.IsSucess = true;
             return Result;
         }
+        //Return product By Product ID
         [HttpGet]
-        [Route("Product/{id:int}")]
-        public async Task<ResultViewModel> GetPrdById(int ID)
-        {
-            Result.Data = await PrdRepo.GetByIDAsync(ID);
-            Result.IsSucess = true;
-            return Result;
-        }
-        [HttpGet]
-        [Route("Product/GetByCatID/{CatID}")]
-        public async Task<ResultViewModel> GetPrdByCatID(int CatID)
-        {
-          
-            Result.Data = PrdRepo.GetProdByCatId(CatID);
-            Result.IsSucess = true;
-            return Result;
-        }
+         [Route("Product/{PrdId}")]
+         public async Task<ResultViewModel> GetPrdById(int PrdId)
+         {
+            Result.Data = await PrdRepo.GetByIDAsync(PrdId);
+             Result.IsSucess = true;
+             return Result;
+         }
+         //Return Product By Category ID
+         [HttpGet]
+         [Route("ProductByCatID/{CatID}")]
+         public async Task<ResultViewModel> GetPrdByCatID(int CatID)
+         { 
+            Result.Data = PrdRepo.FindByCondition(i => i.CatId == CatID);
+             Result.IsSucess = true;
+             return Result;
+         }
 
-        //return  All Product By SubCat 
+         //return  All Product By SubCat 
+         [HttpGet]
+         [Route("ProductBySubCat/{SubCatID}")]
+         public async Task<ResultViewModel> GetPrdBySubCatID(int SubCatID)
+         {
+
+             Result.Data= await PrdRepo.FindByCondition(i => i.SubCatId == SubCatID);
+             Result.IsSucess = true;
+             return Result;
+         }
+        //return  All Product By Brands 
         [HttpGet]
-        [Route("ProductBySubCat/{SubCatID}")]
-        public async Task<ResultViewModel> GetPrdBySubCatID(int SubCatID)
+        [Route("ProductByBrandId/{BrandID}")]
+        public async Task<ResultViewModel> GetPrdByBrandID(int BrandID)
         {
-            
-            var SubCat = await SubCatRepo.GetByIDAsync(SubCatID);
-            if(SubCat!=null)
-            {
-                Result.Data = await PrdRepo.GetProdByCatId(SubCat.CatID);
-                Result.IsSucess = true;
-                return Result;
-            }
-            // Result.Data = await PrdRepo.GetProdByCatId(SubCat.CatID);
-            //  Result.IsSucess = true;
-            // return Result;
-            Result.IsSucess = false;
+
+            Result.Data = await PrdRepo.FindByCondition(i => i.BrandId == BrandID);
+            Result.IsSucess = true;
             return Result;
         }
         //return  All Category
         [HttpGet]
-        [Route("Category")]
-        public async Task<ResultViewModel> GetAllCategory()
+         [Route("Category")]
+         public async Task<ResultViewModel> GetAllCategory()
+         {
+             Result.Data = await CatRepo.GetAsync();
+             Result.IsSucess = true;
+             return Result;
+         }
+
+        //return SubCategory By Category ID
+        [HttpGet]
+        [Route("SubCategoryByCatId/{CatId}")]
+        public async Task<ResultViewModel> GetAllSubCategory(int CatId)
         {
-            Result.Data = await CatRepo.GetAsync();
+            Result.Data = await SubCatRepo.FindByCondition(i=>i.CatId== CatId);
             Result.IsSucess = true;
             return Result;
         }
         //return  All SubCategory 
         [HttpGet]
-        [Route("SubCategory")]
-        public async Task<ResultViewModel> GetAllSubCategory()
-        {
-            Result.Data = await SubCatRepo.GetAsync();
-            Result.IsSucess = true;
-            return Result;
-        }
+         [Route("SubCategory")]
+         public async Task<ResultViewModel> GetAllSubCategory()
+         {
+             Result.Data = await SubCatRepo.GetAsync();
+             Result.IsSucess = true;
+             return Result;
+         }
 
-        //return  All Brands 
-       /* [HttpGet]
-        [Route("Brands")]
-        public async Task<ResultViewModel> GetAllBrands()
-        {
-            Result.Data = await BrandsRepo.GetAsync();
-            Result.IsSucess = true;
-            return Result;
-        }*/
+         //return  All Brands 
+         [HttpGet]
+         [Route("Brands")]
+         public async Task<ResultViewModel> GetAllBrands()
+         {
+             Result.Data = await BrandsRepo.GetAsync();
+             Result.IsSucess = true;
+             return Result;
+         }
+
+
+
+
+
+
     }
 }

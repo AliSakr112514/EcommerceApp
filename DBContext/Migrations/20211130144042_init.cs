@@ -46,13 +46,13 @@ namespace DBContext.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    CatID = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CatID);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -137,7 +137,7 @@ namespace DBContext.Migrations
                         name: "FK_SubCategories_Categories_CatId",
                         column: x => x.CatId,
                         principalTable: "Categories",
-                        principalColumn: "CatID",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -192,10 +192,10 @@ namespace DBContext.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdminId = table.Column<int>(type: "int", nullable: false),
+                    CatId = table.Column<int>(type: "int", nullable: false),
                     BrandId = table.Column<int>(type: "int", nullable: false),
                     StockId = table.Column<int>(type: "int", nullable: false),
-                    SubCatId = table.Column<int>(type: "int", nullable: false),
-                    CatID = table.Column<int>(type: "int", nullable: false)
+                    SubCatId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -213,10 +213,10 @@ namespace DBContext.Migrations
                         principalColumn: "BrandId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CatID",
-                        column: x => x.CatID,
+                        name: "FK_Products_Categories_CatId",
+                        column: x => x.CatId,
                         principalTable: "Categories",
-                        principalColumn: "CatID",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_stocks_StockId",
@@ -466,9 +466,9 @@ namespace DBContext.Migrations
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CatID",
+                name: "IX_Products_CatId",
                 table: "Products",
-                column: "CatID");
+                column: "CatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_StockId",

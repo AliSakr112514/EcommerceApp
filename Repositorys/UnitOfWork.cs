@@ -14,15 +14,15 @@ namespace Repositorys
         IRepository<Product> PrdRepo;
         IRepository<Category> CatRepo;
         IRepository<SubCategory> SubCatRepo;
-       // IRepository<Brands> BrandRepo;
+        IRepository<Brands> BrandRepo;
         public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,
-            IRepository<Category> _CatRepo, IRepository<SubCategory> _SubCatRepo)//, IRepository<Brands> _BrandRepo)
+            IRepository<Category> _CatRepo, IRepository<SubCategory> _SubCatRepo, IRepository<Brands> _BrandRepo)
         {
             Context = context;
             PrdRepo = _PrdRepo;
             CatRepo = _CatRepo;
             SubCatRepo = _SubCatRepo;
-          //  BrandRepo = _BrandRepo;
+            BrandRepo = _BrandRepo;
 
 
         }
@@ -39,10 +39,10 @@ namespace Repositorys
         {
             return SubCatRepo;
         }
-        /*public IRepository<Brands> GetBrandRepo()
+        public IRepository<Brands> GetBrandRepo()
         {
             return BrandRepo;
-        }*/
+        }
 
         public async Task Save()
         {

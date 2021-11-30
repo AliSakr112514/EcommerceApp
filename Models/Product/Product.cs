@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models 
 {
-    public partial class Product : BaseModel
+    public partial class Product 
     {
         public int ProductId { get; set; }
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace Models
         public int Quantity { get; set; }
         public string Description  { get; set; }
         public  int AdminId  { get; set; }
-       // public int CatId  { get; set; }
+        public int CatId  { get; set; }
         public int BrandId { get; set; }
         public int StockId { get; set; }
         public int SubCatId { get; set; } 

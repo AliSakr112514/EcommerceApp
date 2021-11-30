@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models 
 {
-    public class SubCategory :BaseModel
+    public class SubCategory 
     {
         public int SubCategoryId { get; set; }
-       // public int CatId { get; set; }
+        public int CatId { get; set; }
         public string SubCatName { get; set; }
 
         public Category category { get; set; }
