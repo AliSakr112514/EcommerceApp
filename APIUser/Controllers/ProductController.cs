@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repositorys;
@@ -11,6 +12,7 @@ namespace APIUser.Controllers
 {
   
    // [Route("Product")]
+    [Authorize]
     [ApiController]
     public class ProductController : ControllerBase
     {

@@ -8,7 +8,7 @@ namespace Models
 {
     public partial class Rates
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductId { get; set; }
         public int Rate { get; set; } 
     }
