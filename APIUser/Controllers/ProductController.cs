@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -10,25 +11,27 @@ using System.Threading.Tasks;
 
 namespace APIUser.Controllers
 {
-  
+    //[Authorize]
    // [Route("Product")]
-    [Authorize]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class ProductController : ControllerBase
     {
         IRepository<Product> PrdRepo;
         IRepository<Category> CatRepo;
         IRepository<SubCategory> SubCatRepo;
         IRepository<Brands> BrandsRepo;
+        IRepository<Comment> CommentRepo;
         IUnitOfWork IunitOfWork;
         ResultViewModel Result;
         public ProductController(IUnitOfWork _IunitOfWork )
         {
             IunitOfWork = _IunitOfWork;
-            PrdRepo = _IunitOfWork.GetPrdRepo();
-            CatRepo = _IunitOfWork.GetCatRepo();
-            SubCatRepo = _IunitOfWork.GetSubCatRepo();
-            BrandsRepo = _IunitOfWork.GetBrandRepo();
+            PrdRepo = IunitOfWork.GetPrdRepo();
+            CatRepo = IunitOfWork.GetCatRepo();
+            SubCatRepo = IunitOfWork.GetSubCatRepo();
+            BrandsRepo = IunitOfWork.GetBrandRepo();
+            CommentRepo = IunitOfWork.GetCommentRepo();
             Result = new ResultViewModel();
         }
         // return All products
@@ -54,7 +57,7 @@ namespace APIUser.Controllers
          [Route("ProductByCatID/{CatID}")]
          public async Task<ResultViewModel> GetPrdByCatID(int CatID)
          { 
-            Result.Data = PrdRepo.FindByCondition(i => i.CatId == CatID);
+            Result.Data = await PrdRepo.FindByCondition(i => i.CatId == CatID);
              Result.IsSucess = true;
              return Result;
          }
@@ -80,7 +83,7 @@ namespace APIUser.Controllers
             return Result;
         }
         //return  All Category
-        [HttpGet]
+         [HttpGet]
          [Route("Category")]
          public async Task<ResultViewModel> GetAllCategory()
          {
@@ -117,6 +120,17 @@ namespace APIUser.Controllers
              Result.IsSucess = true;
              return Result;
          }
+
+
+        //return  All Comments by ProductID 
+        [HttpGet]
+        [Route("Comments/{PrdID}")]
+        public async Task<ResultViewModel> GetAllComment(int PrdID)
+        {
+            Result.Data = await CommentRepo.FindByCondition(i => i.ProductId == PrdID);
+            Result.IsSucess = true;
+            return Result;
+        }
 
 
 

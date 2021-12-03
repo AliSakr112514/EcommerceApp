@@ -13,6 +13,7 @@ namespace Repositorys
         IRepository<Category> GetCatRepo();
         IRepository<SubCategory> GetSubCatRepo();
         IRepository<Brands> GetBrandRepo();
+        IRepository<Comment> GetCommentRepo();
 
         Task Save();
     }

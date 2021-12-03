@@ -15,14 +15,17 @@ namespace Repositorys
         IRepository<Category> CatRepo;
         IRepository<SubCategory> SubCatRepo;
         IRepository<Brands> BrandRepo;
+        IRepository<Comment> CommentRepo;
         public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,
-            IRepository<Category> _CatRepo, IRepository<SubCategory> _SubCatRepo, IRepository<Brands> _BrandRepo)
+            IRepository<Category> _CatRepo, IRepository<SubCategory> _SubCatRepo
+            , IRepository<Brands> _BrandRepo, IRepository<Comment> _CommentRepo)
         {
             Context = context;
             PrdRepo = _PrdRepo;
             CatRepo = _CatRepo;
             SubCatRepo = _SubCatRepo;
             BrandRepo = _BrandRepo;
+            CommentRepo = _CommentRepo;
 
 
         }
@@ -42,6 +45,11 @@ namespace Repositorys
         public IRepository<Brands> GetBrandRepo()
         {
             return BrandRepo;
+        }
+
+        public IRepository<Comment> GetCommentRepo()
+        {
+            return CommentRepo;
         }
 
         public async Task Save()

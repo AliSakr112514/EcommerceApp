@@ -22,7 +22,7 @@ namespace Repositorys
         //Get All
         public async Task<IEnumerable<T>> GetAsync()
         {
-            return Table;
+            return  Table;
         }
         //Get By ID
         public async Task<T> GetByIDAsync(int Id)

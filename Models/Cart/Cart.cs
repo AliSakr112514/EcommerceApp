@@ -12,6 +12,7 @@ namespace Models
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public float price { get; set; }
+
         public User user { get; set; }
         public Product product { get; set; }
 
