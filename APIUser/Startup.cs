@@ -44,7 +44,7 @@ namespace APIUser
                 });
 
             // For Identity  
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, UserRoles>()
                 .AddEntityFrameworkStores<myDbContext>()
                 .AddDefaultTokenProviders();
 

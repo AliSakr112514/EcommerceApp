@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public partial class User :IdentityUser
+    public partial class User :IdentityUser<int>
     {
        // public int UserId { get; set; }
         public string FistName { get; set; }

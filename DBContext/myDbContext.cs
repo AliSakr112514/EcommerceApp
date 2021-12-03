@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using APIUser;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models; 
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DBContext
 {
-    public class myDbContext : IdentityDbContext<User>
+    public class myDbContext : IdentityDbContext<User, UserRoles, int>
     {
         public myDbContext(DbContextOptions<myDbContext> options)
            : base(options)
