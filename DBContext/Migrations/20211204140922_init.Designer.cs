@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBContext.Migrations
 {
     [DbContext(typeof(myDbContext))]
-    [Migration("20211203142207_init")]
+    [Migration("20211204140922_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -248,9 +248,10 @@ namespace DBContext.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryName")
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("CategoryId");
 
@@ -324,7 +325,6 @@ namespace DBContext.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OrderStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentId")

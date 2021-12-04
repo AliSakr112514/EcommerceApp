@@ -14,6 +14,9 @@ namespace Repositorys
         IRepository<SubCategory> GetSubCatRepo();
         IRepository<Brands> GetBrandRepo();
         IRepository<Comment> GetCommentRepo();
+        IRepository<Rates> GetRateRepo();
+        IRepository<WatchList> GetWatchListRepo();
+        IRepository<Order> GetOrderRepo();
 
         Task Save();
     }

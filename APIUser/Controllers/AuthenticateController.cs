@@ -22,14 +22,14 @@ namespace APIUser.Controllers
     public class AuthenticateController : ControllerBase
     {
          private readonly UserManager<User> userManager;
-         private readonly RoleManager<IdentityRole> roleManager;
+        // private readonly RoleManager<IdentityRole> roleManager;
          private readonly IConfiguration _configuration;
 
          public AuthenticateController(UserManager<User> userManager,
-             RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+            /* RoleManager<IdentityRole> roleManager,*/ IConfiguration configuration)
          {
              this.userManager = userManager;
-             this.roleManager = roleManager;
+             //this.roleManager = roleManager;
              _configuration = configuration;
          }
 

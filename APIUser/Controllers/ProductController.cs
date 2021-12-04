@@ -122,15 +122,6 @@ namespace APIUser.Controllers
          }
 
 
-        //return  All Comments by ProductID 
-        [HttpGet]
-        [Route("Comments/{PrdID}")]
-        public async Task<ResultViewModel> GetAllComment(int PrdID)
-        {
-            Result.Data = await CommentRepo.FindByCondition(i => i.ProductId == PrdID);
-            Result.IsSucess = true;
-            return Result;
-        }
 
 
 

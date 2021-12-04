@@ -16,9 +16,12 @@ namespace Repositorys
         IRepository<SubCategory> SubCatRepo;
         IRepository<Brands> BrandRepo;
         IRepository<Comment> CommentRepo;
-        public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,
-            IRepository<Category> _CatRepo, IRepository<SubCategory> _SubCatRepo
-            , IRepository<Brands> _BrandRepo, IRepository<Comment> _CommentRepo)
+        IRepository<Rates>RateRepo;
+        IRepository<WatchList> WatchListRepo;
+        IRepository<Order> OrderRepo;
+        public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,IRepository<Category> _CatRepo,
+            IRepository<SubCategory> _SubCatRepo,IRepository<Brands> _BrandRepo, IRepository<Comment> _CommentRepo,
+            IRepository<Rates> _RateRepo, IRepository<WatchList> _WatchListRepo,IRepository<Order> _OrderRepo)
         {
             Context = context;
             PrdRepo = _PrdRepo;
@@ -26,7 +29,9 @@ namespace Repositorys
             SubCatRepo = _SubCatRepo;
             BrandRepo = _BrandRepo;
             CommentRepo = _CommentRepo;
-
+            RateRepo = _RateRepo;
+            WatchListRepo = _WatchListRepo;
+            OrderRepo = _OrderRepo;
 
         }
         public IRepository<Product> GetPrdRepo()
@@ -50,6 +55,18 @@ namespace Repositorys
         public IRepository<Comment> GetCommentRepo()
         {
             return CommentRepo;
+        }
+        public IRepository<Rates> GetRateRepo()
+        {
+            return RateRepo;
+        }
+        public IRepository<WatchList> GetWatchListRepo()
+        {
+            return WatchListRepo;
+        }
+        public IRepository<Order> GetOrderRepo()
+        {
+            return OrderRepo;
         }
 
         public async Task Save()

@@ -16,7 +16,7 @@ namespace Models
             builder.HasKey(i => i.OrderId);
             builder.Property(i => i.OrderId).ValueGeneratedOnAdd();
             builder.Property(i => i.OrderDate).IsRequired();
-            builder.Property(i => i.OrderStatus).IsRequired();
+           // builder.Property(i => i.OrderStatus).IsRequired();
             builder.Property(i => i.TotalPrice).IsRequired();
 
             builder.HasOne(o => o.user).WithMany(u => u.orders).HasForeignKey(o => o.UserId);

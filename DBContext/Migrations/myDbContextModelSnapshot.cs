@@ -246,9 +246,10 @@ namespace DBContext.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryName")
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("CategoryId");
 
@@ -322,7 +323,6 @@ namespace DBContext.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OrderStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentId")

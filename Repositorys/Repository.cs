@@ -1,4 +1,5 @@
 ﻿using DBContext;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using System;
@@ -34,6 +35,28 @@ namespace Repositorys
         public async Task<IQueryable<T>> FindByCondition(Expression<Func<T, bool>> expression)
         {
             return  Table.Where(expression).AsNoTracking();
+        }
+
+        public async Task<T> Add(T entity)
+        {
+            await Table.AddAsync(entity);
+            return entity;
+        }
+        public async Task<T> Update(T entity)
+        {
+            Table.Update(entity);
+            return entity;
+        }
+        public async Task<T> UpdatePatch(int id, JsonPatchDocument entity)
+        {
+            T Temp = await Table.FindAsync(id);
+            entity.ApplyTo(Temp);
+            return Temp;
+        }
+        public async Task<T> Remove(T entity)
+        {
+            Table.Remove(entity);
+            return entity;
         }
 
 
