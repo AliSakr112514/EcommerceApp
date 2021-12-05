@@ -18,10 +18,9 @@ namespace Models
             builder.Property(i => i.StartDate).IsRequired(); 
             builder.Property(i => i.EndDate).IsRequired();
             builder.Property(i => i.NewPrice).IsRequired();
-
             builder.HasOne(o => o.admin).WithMany(a => a.offers).HasForeignKey(o => o.AdminId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(o => o.product).WithMany(p => p.offers).HasForeignKey(o => o.ProductId).OnDelete(DeleteBehavior.Restrict);
-
+            
         }
     }
 }
