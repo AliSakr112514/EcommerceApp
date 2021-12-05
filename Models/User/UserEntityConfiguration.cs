@@ -13,7 +13,7 @@ namespace Models
         public void Configure(EntityTypeBuilder<User> builder)
         {
             //builder.HasKey(u => u.Id);
-            //builder.Property(u => u.Id).ValueGeneratedOnAdd();
+             // builder.Property(u => u.Id).ValueGeneratedOnAdd();
             //builder.Property(u => u.FistName).IsRequired().HasMaxLength(15);
             //builder.Property(u => u.LastName).IsRequired().HasMaxLength(15);
             builder.Property(u => u.UserName).IsRequired().HasMaxLength(15);

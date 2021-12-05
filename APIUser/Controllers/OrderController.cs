@@ -26,7 +26,7 @@ namespace APIUser.Controllers
         }
 
         //get Order by User ID 
-        [HttpGet]
+        [HttpPost]
         [Route("Order/{userId}")]
         public async Task<ResultViewModel> GetOrder(int userId)
         {

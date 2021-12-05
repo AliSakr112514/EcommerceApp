@@ -19,7 +19,6 @@ namespace APIUser.Controllers
 {
    // [Route("api/[controller]")]
     [ApiController]
-
     public class AuthenticateController : ControllerBase
     {
          private readonly UserManager<User> userManager;

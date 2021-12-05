@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace APIUser.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize]
    // [Route("Product")]
     [ApiController]
     [EnableCors("AllowOrigin")]
@@ -44,7 +44,7 @@ namespace APIUser.Controllers
             return Result;
         }
         //Return product By Product ID
-         [HttpGet]
+        [HttpGet]
          [Route("Product/{PrdId}")]
          public async Task<ResultViewModel> GetPrdById(int PrdId)
          {
@@ -102,7 +102,7 @@ namespace APIUser.Controllers
             return Result;
         }
         //return  All SubCategory 
-         [HttpGet]
+        [HttpGet]
          [Route("SubCategory")]
          public async Task<ResultViewModel> GetAllSubCategory()
          {
