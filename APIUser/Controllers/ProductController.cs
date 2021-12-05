@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace APIUser.Controllers
 {
-    //[Authorize]
+    [Authorize]
    // [Route("Product")]
     [ApiController]
     [EnableCors("AllowOrigin")]
@@ -22,6 +22,7 @@ namespace APIUser.Controllers
         IRepository<SubCategory> SubCatRepo;
         IRepository<Brands> BrandsRepo;
         IRepository<Comment> CommentRepo;
+        IRepository<ProductImg> PrdImgRepo;
         IUnitOfWork IunitOfWork;
         ResultViewModel Result;
         public ProductController(IUnitOfWork _IunitOfWork )
@@ -32,6 +33,7 @@ namespace APIUser.Controllers
             SubCatRepo = IunitOfWork.GetSubCatRepo();
             BrandsRepo = IunitOfWork.GetBrandRepo();
             CommentRepo = IunitOfWork.GetCommentRepo();
+            PrdImgRepo = IunitOfWork.GetPrdImgRepo();
             Result = new ResultViewModel();
         }
         // return All products
@@ -43,6 +45,16 @@ namespace APIUser.Controllers
             Result.IsSucess = true;
             return Result;
         }
+        //return  All productimg 
+        [HttpGet]
+        [Route("Productimg/{prdID}")]
+        public async Task<ResultViewModel> GetAllPrdImg(int prdID)
+        {
+            Result.Data = await PrdImgRepo.FindByCondition(i => i.ProductId == prdID);
+            Result.IsSucess = true;
+            return Result;
+        }
+
         //Return product By Product ID
         [HttpGet]
          [Route("Product/{PrdId}")]
@@ -120,6 +132,9 @@ namespace APIUser.Controllers
              Result.IsSucess = true;
              return Result;
          }
+
+     
+
 
 
 

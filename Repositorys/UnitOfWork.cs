@@ -19,9 +19,11 @@ namespace Repositorys
         IRepository<Rates>RateRepo;
         IRepository<WatchList> WatchListRepo;
         IRepository<Order> OrderRepo;
+        IRepository<ProductImg> PrdImgRepo;
         public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,IRepository<Category> _CatRepo,
             IRepository<SubCategory> _SubCatRepo,IRepository<Brands> _BrandRepo, IRepository<Comment> _CommentRepo,
-            IRepository<Rates> _RateRepo, IRepository<WatchList> _WatchListRepo,IRepository<Order> _OrderRepo)
+            IRepository<Rates> _RateRepo, IRepository<WatchList> _WatchListRepo,IRepository<Order> _OrderRepo,
+             IRepository<ProductImg> _PrdImgRepo)
         {
             Context = context;
             PrdRepo = _PrdRepo;
@@ -32,11 +34,16 @@ namespace Repositorys
             RateRepo = _RateRepo;
             WatchListRepo = _WatchListRepo;
             OrderRepo = _OrderRepo;
+            PrdImgRepo = _PrdImgRepo;
 
         }
         public IRepository<Product> GetPrdRepo()
         {
             return PrdRepo;
+        }
+        public IRepository<ProductImg> GetPrdImgRepo()
+        {
+            return PrdImgRepo;
         }
         public IRepository<Category> GetCatRepo()
         {

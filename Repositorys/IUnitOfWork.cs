@@ -10,6 +10,7 @@ namespace Repositorys
     public interface IUnitOfWork
     {
         IRepository<Product> GetPrdRepo();
+        IRepository<ProductImg> GetPrdImgRepo();
         IRepository<Category> GetCatRepo();
         IRepository<SubCategory> GetSubCatRepo();
         IRepository<Brands> GetBrandRepo();
