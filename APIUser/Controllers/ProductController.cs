@@ -23,6 +23,7 @@ namespace APIUser.Controllers
         IRepository<Brands> BrandsRepo;
         IRepository<Comment> CommentRepo;
         IRepository<ProductImg> PrdImgRepo;
+        IRepository<Offers> OfferRepo;
         IUnitOfWork IunitOfWork;
         ResultViewModel Result;
         public ProductController(IUnitOfWork _IunitOfWork )
@@ -34,6 +35,7 @@ namespace APIUser.Controllers
             BrandsRepo = IunitOfWork.GetBrandRepo();
             CommentRepo = IunitOfWork.GetCommentRepo();
             PrdImgRepo = IunitOfWork.GetPrdImgRepo();
+            OfferRepo = IunitOfWork.GetOfferRepo();
             Result = new ResultViewModel();
         }
         // return All products
@@ -94,6 +96,9 @@ namespace APIUser.Controllers
             Result.IsSucess = true;
             return Result;
         }
+
+
+
         //return  All Category
          [HttpGet]
          [Route("Category")]
@@ -133,7 +138,19 @@ namespace APIUser.Controllers
              return Result;
          }
 
-     
+        //return  All Offers 
+        [HttpGet]
+        [Route("Offers")]
+        public async Task<ResultViewModel> GetAllOffers()
+        {
+            Result.Data = await OfferRepo.GetAsync();
+            Result.IsSucess = true;
+            return Result;
+        }
+
+       
+
+
 
 
 

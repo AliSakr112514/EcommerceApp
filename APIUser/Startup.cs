@@ -36,6 +36,7 @@ namespace APIUser
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
             services.AddDbContext<myDbContext>
                 (options =>
                 {
@@ -47,6 +48,15 @@ namespace APIUser
             services.AddIdentity<User, UserRoles>()
                 .AddEntityFrameworkStores<myDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 
             // Adding Authentication  
             services.AddAuthentication(options =>
@@ -70,7 +80,7 @@ namespace APIUser
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
-            services.AddCors(c =>
+           services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
