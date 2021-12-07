@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBContext.Migrations
 {
     [DbContext(typeof(myDbContext))]
-    [Migration("20211205215237_init")]
+    [Migration("20211207155224_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -294,6 +294,9 @@ namespace DBContext.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<float>("NewPrice")
+                        .HasColumnType("real");
+
+                    b.Property<float>("OldPrice")
                         .HasColumnType("real");
 
                     b.Property<int>("Precentage")

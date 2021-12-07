@@ -148,7 +148,23 @@ namespace APIUser.Controllers
             return Result;
         }
 
-       
+        //return  Offers By Prd ID
+        [HttpGet]
+        [Route("Offers/{PrdID}")]
+        public async Task<ResultViewModel> GetOffersByProductID(int PrdID)
+        {
+            Result.Data = await OfferRepo.FindByCondition(i => i.ProductId == PrdID);
+            if (Result.Data!=null)
+            {
+                Result.IsSucess = true;
+                return Result;
+            }
+            Result.IsSucess = false;
+            return Result;
+
+
+        }
+
 
 
 

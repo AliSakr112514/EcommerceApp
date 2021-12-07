@@ -294,6 +294,9 @@ namespace DBContext.Migrations
                     b.Property<float>("NewPrice")
                         .HasColumnType("real");
 
+                    b.Property<float>("OldPrice")
+                        .HasColumnType("real");
+
                     b.Property<int>("Precentage")
                         .HasColumnType("int");
 

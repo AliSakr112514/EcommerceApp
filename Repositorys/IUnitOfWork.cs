@@ -19,6 +19,7 @@ namespace Repositorys
         IRepository<WatchList> GetWatchListRepo();
         IRepository<Order> GetOrderRepo();
         IRepository<Offers> GetOfferRepo();
+        IRepository<User> GetUserRepo();
         Task Save();
     }
 }
