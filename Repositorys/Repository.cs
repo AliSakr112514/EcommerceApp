@@ -37,6 +37,8 @@ namespace Repositorys
             return  Table.Where(expression).AsNoTracking();
         }
 
+
+
         public async Task<T> Add(T entity)
         {
             await Table.AddAsync(entity);
@@ -58,9 +60,6 @@ namespace Repositorys
             Table.Remove(entity);
             return entity;
         }
-
-
-
 
 
     }

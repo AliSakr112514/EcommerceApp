@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace APIUser.Controllers
 {
-    [Authorize]
+    //[Authorize]
    // [Route("Product")]
     [ApiController]
     [EnableCors("AllowOrigin")]
@@ -21,7 +21,6 @@ namespace APIUser.Controllers
         IRepository<Category> CatRepo;
         IRepository<SubCategory> SubCatRepo;
         IRepository<Brands> BrandsRepo;
-        IRepository<Comment> CommentRepo;
         IRepository<ProductImg> PrdImgRepo;
         IRepository<Offers> OfferRepo;
         IUnitOfWork IunitOfWork;
@@ -33,7 +32,6 @@ namespace APIUser.Controllers
             CatRepo = IunitOfWork.GetCatRepo();
             SubCatRepo = IunitOfWork.GetSubCatRepo();
             BrandsRepo = IunitOfWork.GetBrandRepo();
-            CommentRepo = IunitOfWork.GetCommentRepo();
             PrdImgRepo = IunitOfWork.GetPrdImgRepo();
             OfferRepo = IunitOfWork.GetOfferRepo();
             Result = new ResultViewModel();
@@ -160,6 +158,31 @@ namespace APIUser.Controllers
                 return Result;
             }
             Result.IsSucess = false;
+            return Result;
+
+
+        }
+        //Search for Product
+        [HttpGet]
+        [Route("Search/{search}")]
+        public async Task<ResultViewModel> Search( string search)
+        {
+          if(!string.IsNullOrEmpty(search))
+            {
+               
+            
+                var Search = await PrdRepo.FindByCondition(i => i.Name.Contains(search) 
+                || i.Description.Contains(search));
+                Result.Data = Search;
+                if (Search.Any())
+                {
+                    Result.IsSucess = true;
+                    return Result;
+                }
+
+            }
+            Result.IsSucess = false;
+            Result.Message = "Product Not Found";
             return Result;
 
 
