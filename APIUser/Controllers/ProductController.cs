@@ -162,15 +162,13 @@ namespace APIUser.Controllers
 
 
         }
-        //Search for Product
+        //Search for Product 
         [HttpGet]
         [Route("Search/{search}")]
         public async Task<ResultViewModel> Search( string search)
         {
           if(!string.IsNullOrEmpty(search))
             {
-               
-            
                 var Search = await PrdRepo.FindByCondition(i => i.Name.Contains(search) 
                 || i.Description.Contains(search));
                 Result.Data = Search;
@@ -179,13 +177,10 @@ namespace APIUser.Controllers
                     Result.IsSucess = true;
                     return Result;
                 }
-
             }
             Result.IsSucess = false;
             Result.Message = "Product Not Found";
             return Result;
-
-
         }
 
 
