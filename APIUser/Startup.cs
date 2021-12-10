@@ -85,6 +85,7 @@ namespace APIUser
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IRepository<>),
                         typeof(Repository<>));
             services.AddControllers();

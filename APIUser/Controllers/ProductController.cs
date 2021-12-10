@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace APIUser.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles ="User")]
    // [Route("Product")]
     [ApiController]
     [EnableCors("AllowOrigin")]

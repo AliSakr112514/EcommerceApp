@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,4 +27,18 @@ namespace ViewModel
         public string Password { get; set; }
 
     }
+
+    public static class RegisterModelExtensions
+    {
+        public static User ToModel(this RegisterModel model)
+        {
+            return new User
+            {
+                FistName=model.FirstName,
+                LastName=model.LastName,
+                UserName=model.Username,
+                Email=model.Email,
+            };
+        }
+     }
 }
