@@ -62,7 +62,7 @@ namespace APIUser.Controllers
         }
 
 
-        // Add Comment
+        // Add Rate
         [HttpPost]
         [Route("Rate/add")]
         public async Task<ResultViewModel> AddRate(Rates rate)
@@ -70,6 +70,27 @@ namespace APIUser.Controllers
             Result.Data = await RateRepo.Add(rate);
             Result.Message = "Add Successfully";
             await IunitOfWork.Save();
+            Result.IsSucess = true;
+            return Result;
+        }
+
+        // Get Rate By Product ID 
+        [HttpGet]
+        [Route("Rate/{PrdID}")]
+        public async Task<ResultViewModel> GetRate(int  PrdID)
+        {
+
+            int Rate = 0;
+            int finalRate = 0;
+            var Rates = await RateRepo.FindByCondition(i => i.ProductId == PrdID) as IEnumerable<Rates>; 
+           
+            foreach(var item in Rates)
+                Rate += item.Rate; 
+           
+            if(Rates.Count()>0)
+                finalRate = Rate / Rates.Count();  
+
+            Result.Data = finalRate;
             Result.IsSucess = true;
             return Result;
         }

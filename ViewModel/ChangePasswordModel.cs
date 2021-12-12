@@ -12,9 +12,9 @@ namespace ViewModel
     {
         [Required(ErrorMessage = "Id is Required")]
         public int Id { get; set; }
+
         [Required (ErrorMessage ="Password is Required")]
         public string Password { get; set; }
-
 
     }
     public static class ChangePasswordModelExtension
@@ -24,7 +24,6 @@ namespace ViewModel
             return new User()
             {
                 Id = model.Id
-
             };
         }
     }
