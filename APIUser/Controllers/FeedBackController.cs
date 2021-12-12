@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repositorys;
@@ -11,6 +12,7 @@ namespace APIUser.Controllers
 {
    // [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class FeedBackController : ControllerBase
     {
         IRepository<Comment> CommentRepo;

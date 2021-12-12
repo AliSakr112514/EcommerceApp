@@ -13,11 +13,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Repositorys;
+using Microsoft.AspNetCore.Cors;
 
 namespace APIUser.Controllers
 {
    // [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class AuthenticateController : ControllerBase
     {
         private readonly UserManager<User> userManager;
