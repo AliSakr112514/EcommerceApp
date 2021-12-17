@@ -82,7 +82,7 @@ namespace APIUser
             });
            services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();

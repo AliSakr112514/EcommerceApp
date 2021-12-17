@@ -12,13 +12,13 @@ namespace Models
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
+
             //builder.ToTable("Order");
             builder.HasKey(i => i.OrderId);
             builder.Property(i => i.OrderId).ValueGeneratedOnAdd();
             builder.Property(i => i.OrderDate).IsRequired();
-           // builder.Property(i => i.OrderStatus).IsRequired();
+            // builder.Property(i => i.OrderStatus).IsRequired();
             builder.Property(i => i.TotalPrice).IsRequired();
-
             builder.HasOne(o => o.user).WithMany(u => u.orders).HasForeignKey(o => o.UserId);
             builder.HasOne(o => o.paymentWay).WithMany(pw => pw.orders).HasForeignKey(o => o.PaymentId);
              
