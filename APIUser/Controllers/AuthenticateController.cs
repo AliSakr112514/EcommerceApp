@@ -139,6 +139,9 @@ namespace APIUser.Controllers
                  lastname=user.LastName,
                  username=user.UserName,
                  email=user.Email,
+                 Country = user.Country,
+                 City = user.City,
+                 FullAddress = user.FullAddress
              });
          }
 
@@ -175,18 +178,18 @@ namespace APIUser.Controllers
              {
                  return Ok("NotFound");
              }
-             else
-             {
-                 user.FistName = model.FirstName;
-                 user.LastName = model.LastName;
-                 user.City = model.City;
-                 user.Country = model.Country;
-                 user.ZIP = model.ZIP;
-                 user.FullAddress = model.FullAddress;
-                 var result = await userManager.UpdateAsync(user);
-                 return Ok("Profile Updated Sucessfully");
-             }
-         }
+            else
+            {
+                user.FistName = model.FirstName;
+                user.LastName = model.LastName;
+                user.City = model.City;
+                user.Country = model.Country;
+                user.ZIP = model.ZIP;
+                user.FullAddress = model.FullAddress;
+                var result = await userManager.UpdateAsync(user);
+                return Ok(new { massege = "Profile Updated Sucessfully" });
+            }
+        }
 
         
     }
