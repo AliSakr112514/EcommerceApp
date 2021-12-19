@@ -39,6 +39,7 @@ namespace Repositorys
 
 
 
+
         public async Task<T> Add(T entity)
         {
             await Table.AddAsync(entity);

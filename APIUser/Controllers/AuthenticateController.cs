@@ -30,8 +30,6 @@ namespace APIUser.Controllers
         IUserRepository _UserRepo;
 
 
-
-
         public AuthenticateController(UserManager<User> userManager,
         IConfiguration configuration, IUnitOfWork _IunitOfWork, IUserRepository _UserRepo)
         {
@@ -41,8 +39,8 @@ namespace APIUser.Controllers
             IunitOfWork =  _IunitOfWork;
             UserRepo = IunitOfWork.GetUserRepo();
            this._UserRepo = _UserRepo;
-
         }
+
         [HttpPost]
         [Route("login")]
         public async Task<AuthModel> Login([FromBody] LoginModel model)
