@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/i-techapi-AAMS/apis/i-techapi",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/ebayviewdbdbserver/databases/Ebayuserdb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ebaydatabase",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
