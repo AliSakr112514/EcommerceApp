@@ -26,6 +26,16 @@ namespace ViewModel
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
+        public string Img { get; set; }
+
+        [Required(ErrorMessage = "Country Required")]
+        public string Country { get; set; }
+        [Required(ErrorMessage = "City Required")]
+        public string City { get; set; }
+        public int ZIP { get; set; }
+        [Required(ErrorMessage = "Address Required")]
+        public string FullAddress { get; set; }
+
     }
 
     public static class RegisterModelExtensions
@@ -38,6 +48,10 @@ namespace ViewModel
                 LastName=model.LastName,
                 UserName=model.Username,
                 Email=model.Email,
+                Country = model.Country,
+                City = model.City,
+                FullAddress = model.Email,
+
             };
         }
      }

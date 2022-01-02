@@ -139,6 +139,9 @@ namespace APIUser.Controllers
                  lastname=user.LastName,
                  username=user.UserName,
                  email=user.Email,
+                 country = user.Country,
+                 city = user.City,
+                 fullAddress = user.FullAddress,
              });
          }
 
@@ -173,7 +176,7 @@ namespace APIUser.Controllers
 
              if (user == null)
              {
-                 return Ok("NotFound");
+                 return NotFound(new { massege = "NotFound" });
              }
              else
              {
@@ -184,7 +187,7 @@ namespace APIUser.Controllers
                  user.ZIP = model.ZIP;
                  user.FullAddress = model.FullAddress;
                  var result = await userManager.UpdateAsync(user);
-                 return Ok("Profile Updated Sucessfully");
+                 return Ok(new{massege="Profile Updated Sucessfully"});
              }
          }
 
