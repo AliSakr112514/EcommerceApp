@@ -17,6 +17,7 @@ namespace APIUser.Controllers
     {
 
         IRepository<Order> OrderRepo;
+        IRepository<OrderItem> OrderItemRepo;
         IUnitOfWork IunitOfWork;
         ResultViewModel Result;
 
@@ -24,15 +25,25 @@ namespace APIUser.Controllers
         {
             IunitOfWork = _IunitOfWork;
             OrderRepo = IunitOfWork.GetOrderRepo();
+            OrderItemRepo = IunitOfWork.GetOrderItemRepo();
             Result = new ResultViewModel();
         }
 
         //get Order by User ID 
-        [HttpPost]
+        [HttpGet]
         [Route("Order/{userId}")]
         public async Task<ResultViewModel> GetOrder(int userId)
         {
             Result.Data = await OrderRepo.FindByCondition(i => i.UserId == userId);
+            Result.IsSucess = true;
+            return Result;
+        }
+
+        [HttpGet]
+        [Route("Order/Items/{orderId}")]
+        public async Task<ResultViewModel> GetOrderItems(int orderId)
+        {
+            Result.Data = await OrderItemRepo.FindByCondition(i => i.OrderId == orderId);
             Result.IsSucess = true;
             return Result;
         }

@@ -22,10 +22,12 @@ namespace Repositorys
         IRepository<ProductImg> PrdImgRepo;
         IRepository<Offers> OfferRepo;
         IRepository<User> UserRepo;
+        IRepository<OrderItem> OrderItemRepo;
         public UnitOfWork(myDbContext context, IRepository<Product> _PrdRepo,IRepository<Category> _CatRepo,
             IRepository<SubCategory> _SubCatRepo,IRepository<Brands> _BrandRepo, IRepository<Comment> _CommentRepo,
             IRepository<Rates> _RateRepo, IRepository<WatchList> _WatchListRepo,IRepository<Order> _OrderRepo,
-             IRepository<ProductImg> _PrdImgRepo, IRepository<Offers> _OfferRepo, IRepository<User> _UserRepo)
+             IRepository<ProductImg> _PrdImgRepo, IRepository<Offers> _OfferRepo, IRepository<User> _UserRepo,
+             IRepository<OrderItem> _OrderItemRepo)
         {
             Context = context;
             PrdRepo = _PrdRepo;
@@ -39,6 +41,7 @@ namespace Repositorys
             PrdImgRepo = _PrdImgRepo;
             OfferRepo = _OfferRepo;
             UserRepo = _UserRepo;
+            OrderItemRepo = _OrderItemRepo;
 
         }
         public IRepository<Product> GetPrdRepo()
@@ -88,6 +91,10 @@ namespace Repositorys
         public IRepository<User> GetUserRepo()
         {
             return UserRepo;
+        }
+        public IRepository<OrderItem> GetOrderItemRepo()
+        {
+            return OrderItemRepo;
         }
 
         public async Task Save()

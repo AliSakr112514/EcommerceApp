@@ -20,6 +20,7 @@ namespace Repositorys
         IRepository<Order> GetOrderRepo();
         IRepository<Offers> GetOfferRepo();
         IRepository<User> GetUserRepo();
+        IRepository<OrderItem> GetOrderItemRepo();
         Task Save();
     }
 }
